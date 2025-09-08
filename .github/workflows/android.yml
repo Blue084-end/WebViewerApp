@@ -65,3 +65,9 @@ jobs:
     # 10. (Optional) Deploy placeholder
     - name: Deploy (placeholder)
       run: echo "Add Fastlane or deployment script here"
+      # chạy tùy chọn gỡ lỗi 
+    - name: Build with debug
+      run: ./gradlew build --debug
+
+
+    
