@@ -14,5 +14,17 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "YourAppName" // 🔁 Đổi tên project nếu cần
+plugins {
+    id("com.gradle.enterprise") version "3.15.1" // hoặc phiên bản mới nhất
+}
+
+gradleEnterprise {
+    buildScan {
+        publishAlways()
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+    }
+}
+
+rootProject.name = "WebViewerApp"
 include(":app")
