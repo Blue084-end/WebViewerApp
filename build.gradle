@@ -1,23 +1,13 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        // Nếu bạn dùng Kotlin hoặc các plugin khác, thêm tại đây
-    }
-}
-
 plugins {
     id 'com.android.application' version '8.0.0' apply false
-    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false // nếu dùng Kotlin
+    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
+// ❌ KHÔNG cần phần repositories ở đây nữa
+// ❌ KHÔNG cần allprojects { repositories { ... } }
+
+buildscript {
+    dependencies {
+        // Nếu bạn dùng plugin khác, thêm tại đây
     }
 }
