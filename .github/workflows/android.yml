@@ -12,24 +12,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # 1. Checkout source code
     - name: Checkout code
       uses: actions/checkout@v4
 
+    # 2. Set up JDK
     - name: Set up JDK
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
 
+    # 3. Make gradlew executable
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+    # 4. Build project
     - name: Build with Gradle
       run: ./gradlew build
 
+    # 5. Run unit tests
     - name: Run unit tests
       run: ./gradlew test
 
+    # 6. Upload test reports
+    - name: Upload test reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-report
+        path: app/build/test-results/
+
+    # 7. Run lint check
+    - name: Run lint check
+      run: ./gradlew lint
+
+    # 8. Upload lint report
+    - name: Upload lint report
+      uses: actions/upload-artifact@v4
+      with:
+        name: lint-report
+        path: app/build/reports/lint-results.html
+
+    # 9. Upload APK and other build artifacts
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -37,3 +61,7 @@ jobs:
         path: |
           app/build/outputs/apk/
           app/build/reports/
+
+    # 10. (Optional) Deploy placeholder
+    - name: Deploy (placeholder)
+      run: echo "Add Fastlane or deployment script here"
