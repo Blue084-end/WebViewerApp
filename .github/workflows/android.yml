@@ -68,6 +68,12 @@ jobs:
       # chạy tùy chọn gỡ lỗi 
     - name: Build with debug
       run: ./gradlew build --debug
-
+     # xóa cache 
+    - name: Invalidate Gradle cache
+      uses: actions/cache@v3
+      with:
+       path: ~/.gradle/caches
+       key: gradle-cache-${{ runner.os }}-${{ github.run_id }}
+       restore-keys: gradle-cache-
 
     
