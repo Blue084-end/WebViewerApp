@@ -1,17 +1,20 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android' // nếu bạn dùng Kotlin
 }
 
 android {
-    namespace 'com.example.webviewer' // ✅ Bắt buộc từ AGP 8.0 trở lên
+    namespace 'com.example.yourapp' // đổi thành namespace của bạn
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.webviewer"
+        applicationId "com.example.yourapp" // đổi thành ID của bạn
         minSdk 21
         targetSdk 33
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -26,12 +29,18 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    buildFeatures {
-        viewBinding true // ✅ Nếu bạn dùng ViewBinding
+    kotlinOptions {
+        jvmTarget = '17'
     }
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0' // ✅ Gợi ý thêm Material Design
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0' // ✅ thêm trực tiếp
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
