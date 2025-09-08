@@ -3,11 +3,20 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
 }
 
-// ❌ KHÔNG cần phần repositories ở đây nữa
-// ❌ KHÔNG cần allprojects { repositories { ... } }
+// KHÔNG cần repositories ở đây nếu đã cấu hình trong settings.gradle
 
 buildscript {
     dependencies {
-        // Nếu bạn dùng plugin khác, thêm tại đây
+        // Thêm plugin nếu cần
+    }
+}
+
+// Tạo task tùy chỉnh để build với debug
+task debugBuild {
+    doLast {
+        println "Running build with debug logs and stacktrace..."
+        exec {
+            commandLine './gradlew', 'build', '--debug', '--stacktrace'
+        }
     }
 }
