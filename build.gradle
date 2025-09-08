@@ -1,25 +1,16 @@
-plugins {
-    id 'com.android.application'
-}
-
-android {
-    compileSdk 33
-
-    defaultConfig {
-        applicationId "com.example.webviewer"
-        minSdk 21
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.1'
     }
 }
 
-dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
