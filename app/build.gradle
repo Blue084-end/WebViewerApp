@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.yourapp' // đổi thành namespace của bạn
+    namespace 'com.example.webviewer' // đổi thành namespace của bạn
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.yourapp" // đổi thành ID của bạn
+        applicationId "com.example.webviewer" // đổi thành ID của bạn
         minSdk 21
         targetSdk 33
         versionCode 1
